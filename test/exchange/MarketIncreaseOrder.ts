@@ -85,7 +85,7 @@ describe("Exchange.MarketIncreaseOrder", () => {
 
     expect(await getOrderCount(dataStore)).eq(1);
 
-    const block = await provider.getBlock();
+    const block = await provider.getBlock("latest");
 
     const orderKeys = await getOrderKeys(dataStore, 0, 1);
     const order = await reader.getOrder(dataStore.address, orderKeys[0]);
@@ -411,7 +411,7 @@ describe("Exchange.MarketIncreaseOrder", () => {
 
     await handleOrder(fixture, { create: params });
 
-    const block = await provider.getBlock();
+    const block = await provider.getBlock("latest");
 
     const prices = {
       indexTokenPrice: {

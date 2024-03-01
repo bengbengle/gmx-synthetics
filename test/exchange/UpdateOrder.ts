@@ -126,7 +126,7 @@ describe("Exchange.UpdateOrder", () => {
 
     expect(await getOrderCount(dataStore)).eq(1);
 
-    let block = await provider.getBlock();
+    let block = await provider.getBlock("latest");
 
     const orderKeys = await getOrderKeys(dataStore, 0, 1);
     let order = await reader.getOrder(dataStore.address, orderKeys[0]);
@@ -158,7 +158,7 @@ describe("Exchange.UpdateOrder", () => {
         expandDecimals(5050, 12),
         expandDecimals(52000, 6)
       );
-    block = await provider.getBlock();
+    block = await provider.getBlock("latest");
 
     await printGasUsage(provider, txn, "updateOrder");
 

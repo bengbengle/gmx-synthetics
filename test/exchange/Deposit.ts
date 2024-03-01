@@ -183,7 +183,7 @@ describe("Exchange.Deposit", () => {
       executionFee: "500",
     });
 
-    const block = await provider.getBlock();
+    const block = await provider.getBlock("latest");
     const depositKeys = await getDepositKeys(dataStore, 0, 1);
     const deposit = await reader.getDeposit(dataStore.address, depositKeys[0]);
 
@@ -291,7 +291,7 @@ describe("Exchange.Deposit", () => {
 
     await expect(
       executeDeposit(fixture, {
-        oracleBlockNumber: (await provider.getBlock()).number - 10,
+        oracleBlockNumber: (await provider.getBlock("latest")).number - 10,
       })
     ).to.be.revertedWithCustomError(errorsContract, "OracleBlockNumberNotWithinRange");
 
@@ -317,7 +317,7 @@ describe("Exchange.Deposit", () => {
     await expect(
       executeDeposit(fixture, {
         depositKey: HashZero,
-        oracleBlockNumber: (await provider.getBlock()).number,
+        oracleBlockNumber: (await provider.getBlock("latest")).number,
         gasUsageLabel: "executeDeposit",
       })
     ).to.be.revertedWithCustomError(errorsContract, "EmptyDeposit");

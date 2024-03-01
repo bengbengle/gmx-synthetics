@@ -136,8 +136,8 @@ describe("Oracle", () => {
       .to.be.revertedWithCustomError(errorsContract, "Unauthorized")
       .withArgs(user0.address, "CONTROLLER");
 
-    const blockNumber = (await provider.getBlock()).number;
-    const blockTimestamp = (await provider.getBlock()).timestamp;
+    const blockNumber = (await provider.getBlock("latest")).number;
+    const blockTimestamp = (await provider.getBlock("latest")).timestamp;
 
     await expect(
       oracle.setPrices(dataStore.address, eventEmitter.address, {
@@ -597,7 +597,7 @@ describe("Oracle", () => {
 
     await oracle.clearAllPrices();
 
-    const block1 = await provider.getBlock();
+    const block1 = await provider.getBlock("latest");
     const block0 = await provider.getBlock(block1.number - 1);
 
     // test set prices with a block range
@@ -656,7 +656,7 @@ describe("Oracle", () => {
     const wntPrices = [5990, 5991, 5995, 6010, 6011, 6015, 6017];
     const usdcPrices = [1, 1, 1, 1, 1, 1, 1];
 
-    const block = await provider.getBlock();
+    const block = await provider.getBlock("latest");
 
     const wntSignatures = await signPrices({
       signers: [signer0, signer1, signer2, signer3, signer4, signer7, signer9],

@@ -45,7 +45,7 @@ describe("Exchange.CancelDeposit", () => {
       gasUsageLabel: "createDeposit",
     });
 
-    const block = await provider.getBlock();
+    const block = await provider.getBlock("latest");
     const depositKeys = await getDepositKeys(dataStore, 0, 1);
     let deposit = await reader.getDeposit(dataStore.address, depositKeys[0]);
 

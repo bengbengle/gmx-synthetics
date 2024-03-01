@@ -64,7 +64,7 @@ describe("Exchange.Withdrawal", () => {
 
     expect(await getWithdrawalCount(dataStore)).eq(1);
 
-    const block = await provider.getBlock();
+    const block = await provider.getBlock("latest");
     const withdrawalKeys = await getWithdrawalKeys(dataStore, 0, 1);
     const withdrawal = await reader.getWithdrawal(dataStore.address, withdrawalKeys[0]);
 

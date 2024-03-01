@@ -58,7 +58,7 @@ describe("ProtocolGovernor", () => {
   });
 
   it("uses timestamp for clock", async () => {
-    const block = await provider.getBlock();
+    const block = await provider.getBlock("latest");
     expect(await governor.clock()).eq(block.timestamp);
     expect(await governor.CLOCK_MODE()).eq("mode=timestamp");
   });

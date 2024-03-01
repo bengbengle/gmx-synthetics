@@ -47,7 +47,7 @@ describe("Exchange.LimitIncreaseOrder", () => {
       shouldUnwrapNativeToken: false,
     };
 
-    const block0 = await provider.getBlock();
+    const block0 = await provider.getBlock("latest");
 
     await expect(
       handleOrder(fixture, {
@@ -132,7 +132,7 @@ describe("Exchange.LimitIncreaseOrder", () => {
 
     await mine(5);
 
-    const block0 = await provider.getBlock();
+    const block0 = await provider.getBlock("latest");
 
     await executeOrder(fixture, {
       tokens: [wnt.address, usdc.address],
@@ -172,7 +172,7 @@ describe("Exchange.LimitIncreaseOrder", () => {
 
     await mine(5);
 
-    const block0 = await provider.getBlock();
+    const block0 = await provider.getBlock("latest");
 
     const orderKeys = await getOrderKeys(dataStore, 0, 1);
     let order = await reader.getOrder(dataStore.address, orderKeys[0]);

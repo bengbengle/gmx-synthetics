@@ -45,7 +45,7 @@ describe("Exchange.DecreasePosition.InsolventClose", () => {
       },
     });
 
-    const refTime = (await ethers.provider.getBlock()).timestamp;
+    const refTime = (await ethers.provider.getBlock("latest")).timestamp;
 
     const positionKey0 = getPositionKey(user0.address, ethUsdMarket.marketToken, usdc.address, true);
     const positionKey1 = getPositionKey(user0.address, ethUsdMarket.marketToken, wnt.address, false);
@@ -235,7 +235,7 @@ describe("Exchange.DecreasePosition.InsolventClose", () => {
       },
     });
 
-    let refTime = (await ethers.provider.getBlock()).timestamp;
+    let refTime = (await ethers.provider.getBlock("latest")).timestamp;
 
     const positionKey0 = getPositionKey(user0.address, ethUsdMarket.marketToken, usdc.address, true);
     const positionKey1 = getPositionKey(user0.address, ethUsdMarket.marketToken, wnt.address, false);
@@ -276,7 +276,7 @@ describe("Exchange.DecreasePosition.InsolventClose", () => {
     expect(await getPoolAmount(dataStore, ethUsdMarket.marketToken, usdc.address)).eq(expandDecimals(1_000_000, 6));
 
     await increaseTime(refTime, 10 * 60 * 60);
-    refTime = (await ethers.provider.getBlock()).timestamp;
+    refTime = (await ethers.provider.getBlock("latest")).timestamp;
 
     await usingResult(
       reader.getPositionInfo(

@@ -102,7 +102,7 @@ describe("Exchange.BorrowingFees", () => {
       }
     );
 
-    const block = await provider.getBlock();
+    const block = await provider.getBlock("latest");
     expect(await dataStore.getUint(keys.cumulativeBorrowingFactorUpdatedAtKey(ethUsdMarket.marketToken, true))).closeTo(
       block.timestamp,
       100

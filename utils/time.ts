@@ -3,6 +3,6 @@ import { mine } from "@nomicfoundation/hardhat-network-helpers";
 
 export async function increaseTime(refTime, value) {
   await mine(1);
-  const currentTime = (await ethers.provider.getBlock()).timestamp;
+  const currentTime = (await ethers.provider.getBlock("latest")).timestamp;
   await time.increase(value - (currentTime - refTime));
 }

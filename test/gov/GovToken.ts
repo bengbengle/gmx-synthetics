@@ -27,7 +27,7 @@ describe("GovToken", () => {
   });
 
   it("uses timestamp for clock", async () => {
-    const block = await provider.getBlock();
+    const block = await provider.getBlock("latest");
     expect(await govToken.clock()).eq(block.timestamp);
     expect(await govToken.CLOCK_MODE()).eq("mode=timestamp");
   });

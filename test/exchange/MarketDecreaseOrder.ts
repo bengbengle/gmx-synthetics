@@ -119,7 +119,7 @@ describe("Exchange.MarketDecreaseOrder", () => {
       },
     });
 
-    const block0 = await provider.getBlock();
+    const block0 = await provider.getBlock("latest");
 
     await expect(
       handleOrder(fixture, {

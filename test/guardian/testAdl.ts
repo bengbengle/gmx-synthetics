@@ -76,7 +76,7 @@ describe("Guardian.AdlOrder", () => {
     });
 
     expect(await getIsAdlEnabled(dataStore, ethUsdMarket.marketToken, true)).eq(true);
-    const currBlockNum = (await ethers.provider.getBlock()).number;
+    const currBlockNum = (await ethers.provider.getBlock("latest")).number;
     const prevBlock = await ethers.provider.getBlock(currBlockNum - 1);
     await expect(
       executeAdl(fixture, {

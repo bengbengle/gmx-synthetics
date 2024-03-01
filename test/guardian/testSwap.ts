@@ -295,7 +295,7 @@ describe("Guardian.Swap", () => {
 
       await mine(5);
 
-      const block1 = await provider.getBlock();
+      const block1 = await provider.getBlock("latest");
       const block0 = await provider.getBlock(block1.number - 1);
 
       const prices = [
@@ -366,7 +366,7 @@ describe("Guardian.Swap", () => {
 
       await mine(5);
 
-      const block1 = await provider.getBlock();
+      const block1 = await provider.getBlock("latest");
       const block0 = await provider.getBlock(block1.number - 1);
 
       const prices = [

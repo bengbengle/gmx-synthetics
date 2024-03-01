@@ -78,7 +78,7 @@ describe("Oracle.RealtimeFeeds", () => {
   });
 
   it("realtime feed validations", async () => {
-    const block = await provider.getBlock();
+    const block = await provider.getBlock("latest");
     const baseRealtimeData = getBaseRealtimeData(block);
 
     await expect(
@@ -230,7 +230,7 @@ describe("Oracle.RealtimeFeeds", () => {
   });
 
   it("sets prices with realtime feeds", async () => {
-    const block = await provider.getBlock();
+    const block = await provider.getBlock("latest");
     const baseRealtimeData = getBaseRealtimeData(block);
 
     await dataStore.setBytes32(keys.realtimeFeedIdKey(wnt.address), hashString("WNT"));
@@ -266,7 +266,7 @@ describe("Oracle.RealtimeFeeds", () => {
   });
 
   it("sets prices with regular and realtime feeds", async () => {
-    const block = await provider.getBlock();
+    const block = await provider.getBlock("latest");
     const baseRealtimeData = getBaseRealtimeData(block);
 
     await dataStore.setBytes32(keys.realtimeFeedIdKey(wnt.address), hashString("WNT"));
@@ -327,7 +327,7 @@ describe("Oracle.RealtimeFeeds", () => {
   it("requires block numbers to be overlapping", async () => {
     await mine(10);
 
-    const block = await provider.getBlock();
+    const block = await provider.getBlock("latest");
     const block0 = await provider.getBlock(block.number - 5);
     const block1 = await provider.getBlock(block.number - 4);
     const block2 = await provider.getBlock(block.number - 3);

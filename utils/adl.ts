@@ -24,7 +24,7 @@ export async function updateAdlState(fixture, overrides = {}) {
   const minPrices = overrides.minPrices || [expandDecimals(5000, 4), expandDecimals(1, 6)];
   const maxPrices = overrides.maxPrices || [expandDecimals(5000, 4), expandDecimals(1, 6)];
 
-  const block = await ethers.provider.getBlock();
+  const block = await ethers.provider.getBlock("latest");
 
   const params = {
     oracleBlockNumber: bigNumberify(block.number),
@@ -58,7 +58,7 @@ export async function executeAdl(fixture, overrides = {}) {
   const minPrices = overrides.minPrices || [expandDecimals(5000, 4), expandDecimals(1, 6)];
   const maxPrices = overrides.maxPrices || [expandDecimals(5000, 4), expandDecimals(1, 6)];
 
-  const block = overrides.block || (await ethers.provider.getBlock());
+  const block = overrides.block || (await ethers.provider.getBlock("latest"));
 
   const params = {
     oracleBlockNumber: bigNumberify(block.number),

@@ -65,7 +65,7 @@ describe("Exchange.LimitDecreaseOrder", () => {
 
     await mine(5);
 
-    const block0 = await provider.getBlock();
+    const block0 = await provider.getBlock("latest");
 
     await handleOrder(fixture, {
       create: {
@@ -89,7 +89,7 @@ describe("Exchange.LimitDecreaseOrder", () => {
       })
     ).to.be.revertedWithCustomError(errorsContract, "OracleBlockNumbersAreSmallerThanRequired");
 
-    const block1 = await provider.getBlock();
+    const block1 = await provider.getBlock("latest");
 
     await executeOrder(fixture, {
       tokens: [wnt.address, usdc.address],
